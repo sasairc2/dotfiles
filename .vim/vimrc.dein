@@ -1,0 +1,68 @@
+" Suppress GitHub credential prompts (for unattended install)
+let $GIT_TERMINAL_PROMPT = '0'
+let $GIT_ASKPASS = '/bin/true'
+
+" Ensure clean Vim behavior
+set nocompatible
+
+" ========================
+" Dein Initialization
+" ========================
+
+" Define base and source paths for Dein
+let s:dein_base = expand('~/.cache/dein')
+let s:dein_src  = expand('~/.cache/dein/repos/github.com/Shougo/dein.vim')
+
+" Set runtimepath to include Dein
+execute 'set runtimepath+=' . s:dein_src
+
+" Begin Dein session
+call dein#begin(s:dein_base)
+
+" Load Dein itself
+call dein#add(s:dein_src)
+
+" ========================
+" Plugins
+" ========================
+
+" Snippet engine
+call dein#add('Shougo/neosnippet.vim')
+call dein#add('Shougo/neosnippet-snippets')
+
+" DDC (Dynamic Completion) core and dependencies
+call dein#add('vim-denops/denops.vim')
+call dein#add('Shougo/ddc.vim')
+call dein#add('Shougo/ddc-ui-native')
+call dein#add('Shougo/ddc-source-around')
+call dein#add('Shougo/ddc-filter-converter_remove_overlap')
+call dein#add('Shougo/ddc-filter-sorter_rank')
+call dein#add('Shougo/ddc-filter-matcher_head')
+
+" Language-specific completion
+call dein#add('Shougo/ddc-source-lsp')          " LSP (e.g., clangd)
+call dein#add('Shougo/ddc-source-ctags')        " C/C++ tags
+call dein#add('LumaKernel/ddc-source-file')     " Path/file completion
+call dein#add('Shougo/ddc-source-buffer')       " Buffer words
+call dein#add('Shougo/ddc-source-shell-native') " Shell commands
+
+" Markdown/markup preview
+call dein#add('previm/previm')
+
+" End Dein session
+call dein#end()
+
+" ========================
+" Post-Initialization
+" ========================
+
+" Enable filetype-based indent and plugin loading
+filetype indent plugin on
+
+" Enable syntax highlighting
+syntax enable
+
+" Auto-install missing plugins on startup (optional)
+"if dein#check_install()
+"    call dein#install()
+"endif

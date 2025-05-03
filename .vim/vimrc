@@ -1,0 +1,59 @@
+" Core editor settings
+set nocp
+set ls=2
+set ruler
+set number
+set ignorecase
+set modeline
+set nobackup
+set noswapfile
+set nowrap
+set hidden
+set backspace=indent,eol,start
+set cursorline
+set cindent
+set incsearch
+set tabstop=4
+set shiftwidth=4
+set softtabstop=0
+syntax on
+
+" Load keybind settings
+if filereadable(expand('$HOME/.vim/vimrc.keybind'))
+    source $HOME/.vim/vimrc.keybind
+endif
+
+" Load visual/UI-related settings (colorscheme, highlight, statusline, etc.)
+if filereadable(expand('$HOME/.vim/vimrc.visual'))
+    source $HOME/.vim/vimrc.visual
+endif
+
+" Completion settings
+set ofu=syntaxcomplete#Complete
+set completeopt=longest,menuone
+set ambiwidth=double
+
+" Enable filetype-based plugin and indent loading
+filetype plugin on
+
+" Define simple tab/space conversion commands
+command Exp :set expandtab|:retab
+command Uexp :set noexpandtab|:retab!
+
+" Enable Denops plugin system
+let g:denops#enable = v:true
+
+" Load dein.vim plugin manager config
+if filereadable(expand('$HOME/.vim/vimrc.dein'))
+    source $HOME/.vim/vimrc.dein
+endif
+
+" Load ddc.vim (completion framework) config
+if filereadable(expand('$HOME/.vim/vimrc.ddc'))
+    source $HOME/.vim/vimrc.ddc
+endif
+
+" Load user-or host-specific overrides
+if filereadable(expand('$HOME/.vim/vimrc.local'))
+    source $HOME/.vim/vimrc.local
+endif

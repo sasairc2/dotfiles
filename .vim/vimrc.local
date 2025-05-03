@@ -1,0 +1,11 @@
+" Use Firefox for Previm preview
+let g:previm_open_cmd = 'open -a "Firefox"'
+
+" Enable realtime preview refresh
+let g:previm_enable_realtime = 1
+
+" Treat various markdown-like extensions as markdown
+augroup PrevimSetting
+    autocmd!
+    autocmd BufNewFile,BufRead *.{md,mdwn,mkd,mkdn,mark*} setf markdown
+augroup END

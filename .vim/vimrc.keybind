@@ -1,0 +1,34 @@
+" Buffer navigation
+nnoremap bn     :bnext<CR>
+nnoremap bp     :bprev<CR>
+nnoremap bl     :buffers<CR>:buffer<Space>
+nnoremap bd     :bdelete<CR>
+
+" Window management (split/move/resize)
+nnoremap s      <Nop>
+nnoremap ss     :split<CR>
+nnoremap sv     :vsplit<CR>
+nnoremap sh     <C-w>h
+nnoremap sj     <C-w>j
+nnoremap sk     <C-w>k
+nnoremap sl     <C-w>l
+nnoremap sn     <C-w>w
+nnoremap sr     <C-w>r
+nnoremap sH     <C-w>H
+nnoremap sJ     <C-w>J
+nnoremap sK     <C-w>K
+nnoremap sL     <C-w>L
+nnoremap s+     <C-w>+
+nnoremap s-     <C-w>-
+nnoremap s=     <C-w>=
+
+" Build commands (make)
+nnoremap <C-m>a :write<CR>:make<CR>
+nnoremap <C-m>c :make clean<CR>
+
+" Previm Markdown preview
+nnoremap mp :PrevimOpen<CR>
+
+" ddc.vim: Completion menu navigation
+noremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : "\<TAB>"
+inoremap <silent><expr> <S-TAB> pumvisible() ? "\<C-p>" : "\<S-TAB>"

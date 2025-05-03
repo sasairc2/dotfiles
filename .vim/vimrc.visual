@@ -1,0 +1,70 @@
+" Set preferred colorscheme and background mode
+colorscheme desert
+set background=dark
+
+" Tlist plugin window settings
+let Tlist_Use_Right_Window = 1
+let Tlist_WinWidth = 50
+
+" Custom statusline format
+" Includes filename, modified flags, filetype, encoding, line/column position, and time
+set statusline=%t\ %m%r%h%w[%Y][%{&fenc}][%{&ff}]%=\%{g:Date()}C:%04c,L:%04l/%04L%4p%%
+
+" Ensure background remains transparent (no solid background color)
+autocmd ColorScheme * highlight Normal ctermbg=none
+autocmd ColorScheme * highlight LineNr ctermbg=none
+
+" Customize popup menu (completion) colors
+highlight Pmenu      ctermbg=blue  ctermfg=white
+highlight PmenuSel   ctermbg=blue  ctermfg=red
+highlight PmenuSbar  ctermbg=cyan  ctermfg=green
+highlight PmenuThumb ctermbg=white ctermfg=red
+
+" Define color change for StatusLine during Insert mode
+let g:hi_insert = 'highlight StatusLine gui=none ctermfg=yellow ctermbg=black'
+
+" Apply Insert-mode hook only if syntax highlighting is available
+if has('syntax')
+    augroup MyInsertStatuslineHook
+        autocmd!
+        autocmd InsertEnter * call s:StatusLine('Enter')
+        autocmd InsertLeave * call s:StatusLine('Leave')
+    augroup END
+endif
+
+" Internal variable to store the original StatusLine highlight setting
+let s:slhlcmd = ''
+
+" Function to switch StatusLine color on InsertEnter/Leave
+function! s:StatusLine(mode)
+    if a:mode == 'Enter'
+        " Save current highlight before applying insert mode style
+        silent! let s:slhlcmd = 'highlight ' . s:GetHighlight('StatusLine')
+        silent exec g:hi_insert
+    else
+        " Restore the original highlight style
+        highlight clear StatusLine
+        silent exec s:slhlcmd
+    endif
+endfunction
+
+" Function to get the current highlight definition string of a highlight group
+function! s:GetHighlight(hi)
+    redir => hl
+    exec 'highlight '.a:hi
+    redir END
+    let hl = substitute(hl, '[\r\n]', '', 'g')
+    let hl = substitute(hl, 'xxx', '', '')
+    return hl
+endfunction
+
+" Terminal-specific input settings (CLI only, no GUI)
+if has('unix') && !has('gui_running')
+    inoremap <silent> <ESC> <ESC>
+    inoremap <silent> <C-c> <ESC>
+endif
+
+" Function to provide current date/time string for the statusline
+function! g:Date()
+    return strftime("%x %H:%M ")
+endfunction

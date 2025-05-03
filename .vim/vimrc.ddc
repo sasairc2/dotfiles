@@ -1,0 +1,57 @@
+" For macOS users:
+"
+" Install universal-ctags via Homebrew:
+"   brew install --HEAD universal-ctags/universal-ctags/universal-ctags
+"
+" Then generate tags with:
+"   ctags -R --languages=C,C++ --c-kinds=fp --fields=+n --extras=+q
+" or:
+"   ctags -R --languages= --c-kinds=fp --fields=+n --extras=+q
+
+" Tag search paths for C/C++ completion
+set tags=./tags,./**/tags
+
+" Enable DDC on startup
+autocmd VimEnter * call ddc#enable()
+
+" Use the native UI
+call ddc#custom#patch_global('ui', 'native')
+" Uncomment to use only 'around' source
+"call ddc#custom#patch_global('sources', ['around'])
+
+" Global DDC configuration
+call ddc#custom#patch_global({
+    \ 'sources': ['file', 'around'],
+    \ 'sourceOptions': {
+    \   '_': {
+    \     'matchers': ['matcher_head'],
+    \     'sorters': ['sorter_rank'],
+    \     'converters': ['converter_remove_overlap'],
+    \   },
+    \   'file': {
+    \     'forceCompletionPattern':
+    \       '\#\s*include\s*["<][^">]*',
+    \   },
+    \ },
+    \ 'sourceParams': {
+    \   'file': {
+    \     'mode': 'file',
+    \     'path': [
+    \       '/usr/include',
+    \       '/usr/local/include',
+    \       './include',
+    \       '.'
+    \     ],
+    \   },
+    \ },
+    \})
+
+" Filetype-specific configuration for C and C++
+call ddc#custom#patch_filetype('c,cpp', {
+    \ 'sources': ['file', 'ctags', 'around'],
+    \ 'sourceOptions': {
+    \   '_': {
+    \     'matchers': ['matcher_head'],
+    \   },
+    \ },
+    \})
