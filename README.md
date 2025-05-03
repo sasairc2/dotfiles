@@ -32,6 +32,7 @@ Minimal, modular Vim, Zsh, and GNU Screen setup.
 ├── env.zsh
 ├── completions/
 .screenrc
+```
 
 ## Notes
 
