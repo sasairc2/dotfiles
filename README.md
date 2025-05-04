@@ -12,26 +12,29 @@ Minimal, modular Vim, Zsh, and GNU Screen setup.
 ## Structure
 
 ```sh
-.config
-├── htop
-│   └── htoprc
-.vim
-├── ftplugin
-│   ├── make.vim
-│   └── markdown.vim
-├── vimrc
-├── vimrc.ddc
-├── vimrc.dein
-├── vimrc.keybind
-├── vimrc.local
-└── vimrc.visual
-.zsh/
-├── .zshenv
-├── .zshrc
-├── alias.zsh
-├── env.zsh
-├── completions/
-.screenrc
+.
+├── .config
+│   └── htop
+│       └── htoprc
+├── .vim
+│   ├── ftplugin
+│   │   ├── make.vim
+│   │   └── markdown.vim
+│   ├── vimrc
+│   ├── vimrc.ddc
+│   ├── vimrc.dein
+│   ├── vimrc.keybind
+│   ├── vimrc.local
+│   └── vimrc.visual
+├── .zsh
+│   ├── .zshenv
+│   ├── .zshrc
+│   ├── alias.zsh
+│   ├── completions/
+│   └── env.zsh
+├── .screenrc
+├── LICENSE
+└── README.md
 ```
 
 ## Notes
@@ -41,7 +44,8 @@ Minimal, modular Vim, Zsh, and GNU Screen setup.
 
 ## License
 
-[WTFPL version 2](http://www.wtfpl.net/)
+These dotfiles are licensed under the Can't Be Bothered License 2025 (CBL).  
+See the [LICENSE](https://raw.githubusercontent.com/sasairc2/dotfiles/refs/heads/main/LICENSE) file for details.
 
 ## Author
 
