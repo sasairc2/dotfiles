@@ -149,10 +149,8 @@ show_envs() {
 
 reset_path
 use_generic_env
-use_prefix_local
-use_nodebrew
 use_xdg
-use_clangsay
+use_nodebrew
 
 if [ "${ZSH_OS}" = "Darwin" ]; then
     use_homebrew
@@ -167,3 +165,6 @@ elif [ "${ZSH_OS}" = "Linux" ]; then
             compiler_flags_for_linux ;;
     esac
 fi
+
+use_prefix_local
+use_clangsay
