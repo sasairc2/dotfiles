@@ -29,6 +29,7 @@ alias d="git diff"
 alias l="git log --decorate=full --graph --color"
 alias m="git merge --no-ff"
 alias mf="git submodule foreach git pull origin master"
+alias rs="git restore --staged"
 
 # cssh
 #alias clusterssh="PERL5LIB=\"\" clusterssh"
