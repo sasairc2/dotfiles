@@ -147,6 +147,11 @@ show_envs() {
     fi
 }
 
+# path deduplication
+#finalize_env() {
+#    typeset -U PATH MANPATH INFOPATH PKG_CONFIG_PATH CPPFLAGS LDFLAGS
+#}
+
 reset_path
 use_generic_env
 use_xdg
