@@ -1,6 +1,6 @@
 PREFIX		:= ~/testprefix
 XDG_CONF_DIR	:= $(PREFIX)/.config
-MAKE		:= make
+MAKE		:= gmake
 export
 
 all clean:
@@ -17,7 +17,7 @@ install-screenrc: .screenrc
 	install -pm 644 $< $(PREFIX)
 
 install-htoprc: .config
-	make -C $< $@
+	$(MAKE) -C $< $@
 
 install: install-vimrc \
 	install-zshrc \
