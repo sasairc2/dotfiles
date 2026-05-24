@@ -1,0 +1,1 @@
+./configure --prefix=${HOME}/local --sysconfdir=${HOME}/local/etc --enable-colors256 --enable-use-locale

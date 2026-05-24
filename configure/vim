@@ -1,0 +1,1 @@
+./configure --prefix=${HOME}/local --enable-cscope --enable-fail-if-missing --enable-luainterp=yes --with-lua-prefix=/opt/homebrew/Cellar/lua/5.5.0 --enable-perlinterp=yes --enable-python3interp=yes --enable-rubyinterp=yes --with-tlib=ncurses
