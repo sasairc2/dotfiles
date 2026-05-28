@@ -1,13 +1,14 @@
 # dotfiles
 
-Minimal, modular Vim, Zsh, and GNU Screen setup.
+Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 
 ## Features
 
 - Vim with dein.vim + ddc.vim
+- Per-filetype indent via `.vim/ftplugin`
 - Zsh split into `env.zsh`, `alias.zsh`, `env.local.zsh`
 - Custom `.screenrc` with status line and keybinds
-- Per-filetype indent via `.vim/ftplugin`
+- Minimal X11 config via `.xinitrc`, `.Xresources`, `.Xmodmap`
 
 ## Structure
 
@@ -33,14 +34,18 @@ Minimal, modular Vim, Zsh, and GNU Screen setup.
 │   ├── completions/
 │   └── env.zsh
 ├── .screenrc
+├── .Xresources
+├── .Xmodmap
+├── .xinitrc
 ├── LICENSE
 └── README.md
 ```
 
 ## Notes
 
-- macOS & Linux supported
+- macOS and Linux supported
 - No tmux, no fluff
+- X11 session started via .xinitrc (uim + wmaker, long-running stable setup)
 
 ## License
 
