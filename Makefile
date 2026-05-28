@@ -19,6 +19,9 @@ install-zshrc: prefix .zsh
 install-screenrc: prefix .screenrc
 	install -pm 644 .screenrc $(PREFIX)
 
+install-fbtermrc: prefix .fbtermrc
+	install -pm 644 .fbtermrc $(PREFIX)
+
 install-htoprc: .config
 	$(MAKE) -C $< $@
 
@@ -38,5 +41,6 @@ install: install-vimrc \
 	install-vimrc \
 	install-zshrc \
 	install-screenrc \
+	install-fbtermrc \
 	install-htoprc \
 	install-x11

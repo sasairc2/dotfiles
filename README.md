@@ -8,6 +8,7 @@ Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 - Per-filetype indent via `.vim/ftplugin`
 - Zsh split into `env.zsh`, `alias.zsh`, `env.local.zsh`
 - Custom `.screenrc` with status line and keybinds
+- fbterm config for TTY (fonts, input)
 - Minimal X11 config via `.xinitrc`, `.Xresources`, `.Xmodmap`
 
 ## Structure
@@ -34,6 +35,7 @@ Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 │   ├── completions/
 │   └── env.zsh
 ├── .screenrc
+├── .fbtermrc
 ├── .Xresources
 ├── .Xmodmap
 ├── .xinitrc
