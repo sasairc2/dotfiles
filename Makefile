@@ -6,18 +6,25 @@ export
 all clean:
 	@echo "Usage: make install"
 
-install-vimrc: .vim
-	cp -r $< $(PREFIX)
+prefix:
+	mkdir -p $(PREFIX)
 
-install-zshrc: .zsh
-	cp -r $< $(PREFIX)
-	ln -sf $(PREFIX)/$</.zshenv $(PREFIX)/.zshenv
+install-vimrc: prefix .vim
+	cp -r .vim $(PREFIX)
 
-install-screenrc: .screenrc
-	install -pm 644 $< $(PREFIX)
+install-zshrc: prefix .zsh
+	cp -r .zsh $(PREFIX)
+	ln -sf $(PREFIX)/.zsh/.zshenv $(PREFIX)/.zshenv
+
+install-screenrc: prefix .screenrc
+	install -pm 644 .screenrc $(PREFIX)
 
 install-htoprc: .config
 	$(MAKE) -C $< $@
+
+install-x11: prefix
+	install -pm 755 .xinitrc $(PREFIX)
+	install -pm 644 .Xresources .Xmodmap $(PREFIX)
 
 install: install-vimrc \
 	install-zshrc \
@@ -26,8 +33,10 @@ install: install-vimrc \
 
 .PHONY: all \
 	clean \
+	prefix \
 	install \
 	install-vimrc \
 	install-zshrc \
 	install-screenrc \
-	install-htoprc
+	install-htoprc \
+	install-x11
