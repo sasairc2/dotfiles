@@ -47,10 +47,10 @@ Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 
 ## Install
 
-``sh
+```sh
 % make install
 % make PREFIX=$HOME install
-``
+```
 
 default: PREFIX=~/testprefix
 
