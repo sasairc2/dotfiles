@@ -40,9 +40,21 @@ Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 ├── .Xmodmap
 ├── .xinitrc
 ├── .xsession
+├── Makefile
 ├── LICENSE
 └── README.md
 ```
+
+## Install
+
+``sh
+% make install
+% make PREFIX=$HOME install
+``
+
+default: PREFIX=~/testprefix
+
+see also `Makefile`.
 
 ## Notes
 
