@@ -26,7 +26,7 @@ install-htoprc: .config
 	$(MAKE) -C $< $@
 
 install-x11: prefix
-	install -pm 755 .xinitrc $(PREFIX)
+	install -pm 755 .xinitrc .xsession $(PREFIX)
 	install -pm 644 .Xresources .Xmodmap $(PREFIX)
 
 install: install-vimrc \
