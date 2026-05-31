@@ -4,7 +4,6 @@ export GTK_IM_MODULE=uim
 export QT_IM_MODULE=uim
 export WM="/usr/bin/wmaker"
 
-xrdb -remove
 xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
 xset m 6 4
