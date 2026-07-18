@@ -28,7 +28,7 @@ alias p="git push"
 alias d="git diff"
 alias l="git log --decorate=full --graph --color"
 alias m="git merge --no-ff"
-alias mf="git submodule foreach git pull origin master"
+alias mf="git submodule foreach git pull origin main"
 alias rs="git restore --staged"
 
 # cssh
