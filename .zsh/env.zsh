@@ -114,13 +114,12 @@ compiler_flags_for_darwin_universal() {
 
 # compiler flags (linux)
 compiler_flags_for_linux() {
-    export CFLAGS="-march=native -mtune=native -Wall -Wextra -O3 -fomit-frame-pointer -fbranch-probabilities -pipe"
+    export CFLAGS="-march=native -mtune=native -Wall -Wextra -O3 -pipe"
     export CXXFLAGS="${CFLAGS}"
 }
 
 compiler_flags_for_linux_x86_64() {
-    # Intel Core2 Quad Q9400 processor
-    export CFLAGS="-Wall -O3 -m64 -march=core2 -mtune=core2 -mmmx -msse -msse2 -mssse3 -msse4.1 -fomit-frame-pointer -fbranch-probabilities -pipe"
+    export CFLAGS="-march=native -mtune=native -Wall -Wextra -O3 -pipe"
     export CXXFLAGS="${CFLAGS}"
 }
 
