@@ -10,7 +10,8 @@ xset m 6 4
 xset r rate 192 32
 
 /usr/bin/uim-xim &
-#/usr/local/bin/wmsystemtray &
+/usr/bin/pulseaudio --daemonize
+/usr/local/bin/wmsystemtray &
 #/usr/games/xsnow -nosanta &
 
 exec ${WM}
