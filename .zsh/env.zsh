@@ -68,6 +68,12 @@ use_prefix_local() {
     fi
 }
 
+# deno
+use_deno()
+{
+    source "${HOME}/.deno/env"
+}
+
 # homebrew
 use_homebrew() {
     export HOMEBREW_PREFIX="/opt/homebrew"
@@ -154,7 +160,12 @@ show_envs() {
 reset_path
 use_generic_env
 use_xdg
-use_nodebrew
+
+test -d "${HOME}/.deno" && \
+    use_deno
+
+test -d "${HOME}/.nodebrew" && \
+    use_nodebrew
 
 if [ "${ZSH_OS}" = "Darwin" ]; then
     use_homebrew
