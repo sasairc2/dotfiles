@@ -15,6 +15,8 @@ Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 
 ```sh
 .
+├── linux
+│   └── .config
 ├── .config
 │   └── htop
 │       └── htoprc
