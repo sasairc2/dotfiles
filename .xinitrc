@@ -11,13 +11,14 @@ xrandr --output HDMI-2 --mode "2560x1440" --right-of eDP-1
 
 xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
-xset m 6 4
+#xset m 6 4
+xset m 2 1
 xset r rate 192 32
 
 /usr/bin/uim-xim &
 /usr/bin/pulseaudio --daemonize
 /usr/local/bin/wmsystemtray &
-#LANG=C /usr/bin/gkrellm &
+LANG=C /usr/bin/gkrellm &
 #/usr/games/xsnow -nosanta &
 
 exec ${WM}
