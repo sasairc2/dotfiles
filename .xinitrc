@@ -12,7 +12,7 @@ xrandr --output HDMI-2 --mode "2560x1440" --right-of eDP-1
 xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
 #xset m 6 4
-xset m 2 1
+xset m 1.5 2
 xset r rate 192 32
 
 /usr/bin/uim-xim &
