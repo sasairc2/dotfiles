@@ -10,6 +10,8 @@ test -f "${ZDOTDIR}/env.zsh" && \
     source "${ZDOTDIR}/env.zsh"
 test -f "${ZDOTDIR}/alias.zsh" && \
     source "${ZDOTDIR}/alias.zsh"
+test -f "${ZDOTDIR}/motd.zsh" && \
+    cat "${ZDOTDIR}/motd.zsh"
 
 # disable <Ctrl>-S
 stty stop undef
