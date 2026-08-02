@@ -2,23 +2,31 @@
 # .zsh/env.zsh
 #
 
-# save original ${PATH}
-test -z "${ZSH_ORIGINAL_PATH}" && export ZSH_ORIGINAL_PATH="${PATH}"
-export ZSH_OS="$(uname -s)"
-export ZSH_ARCH="$(uname -m)"
+# sysinfo
+set_os_arch() {
+    export ZSH_OS="$(uname -s)"
+    export ZSH_ARCH="$(uname -m)"
+}
 
-reset_path() {
+# backup original PATH
+set_orig_path() {
+    test -z "${ZSH_ORIGINAL_PATH}" && \
+        export ZSH_ORIGINAL_PATH="${PATH}"
+}
+
+# restore original PATH
+reset_orig_path() {
     export PATH="${ZSH_ORIGINAL_PATH}"
 }
 
 use_generic_env() {
     # disable screen lock
     export LOCKPRG="/bin/true"
+ 
+    # prompt
+    export PROMPT="%{[31m%}%n@%m%{[00m%}%f [ %~ ] %h %# "
 
-    # zsh completions
-    typeset -ga fpath
-    fpath+=("${ZDOTDIR:-${HOME}/.zsh}/completions")
-
+    # misc
     export EDITOR="vim"
     export VISUAL="${EDITOR}"
     export PAGER="less"
@@ -59,12 +67,10 @@ use_prefix_local() {
 
     if [ "${ZSH_OS}" = "Darwin" ]; then
         export DYLD_LIBRARY_PATH="${PREFIX_LOCAL}/lib${DYLD_LIBRARY_PATH:+:$DYLD_LIBRARY_PATH}"
-    elif [ "${ZSH_OS}" = "Linux" ]; then
+    else
         export LD_LIBRARY_PATH="${PREFIX_LOCAL}/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
         #export LD_RUN_PATH="${LD_LIBRARY_PATH}"
         #export RPATH="${LD_LIBRARY_PATH}"
-    else
-        export LD_LIBRARY_PATH="${PREFIX_LOCAL}/lib${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}"
     fi
 }
 
@@ -137,14 +143,16 @@ compiler_flags_for_linux_aarch64 () {
 
 # show envs
 show_envs() {
-    echo "ZSH_OS=${ZSH_OS}"
-    echo "ZSH_ARCH=${ZSH_ARCH}"
-    echo "PATH=${PATH}"
-    echo "PKG_CONFIG_PATH=${PKG_CONFIG_PATH}"
-    echo "CFLAGS=${CFLAGS}"
-    echo "CXXFLAGS=${CXXFLAGS}"
-    echo "CPPFLAGS=${CPPFLAGS}"
-    echo "LDFLAGS=${LDFLAGS}"
+    cat <<EOF
+ZSH_OS=${ZSH_OS}
+ZSH_ARCH=${ZSH_ARCH}
+PATH=${PATH}
+PKG_CONFIG_PATH=${PKG_CONFIG_PATH}
+CFLAGS=${CFLAGS}
+CXXFLAGS=${CXXFLAGS}
+CPPFLAGS=${CPPFLAGS}
+LDFLAGS=${LDFLAGS}
+EOF
     if [ "${ZSH_OS}" = "Darwin" ]; then
         echo "DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}"
     else
@@ -157,29 +165,36 @@ show_envs() {
 #    typeset -U PATH MANPATH INFOPATH PKG_CONFIG_PATH CPPFLAGS LDFLAGS
 #}
 
-reset_path
-use_generic_env
-use_xdg
+() {
+    set_os_arch
+    set_orig_path
+    reset_orig_path
+    use_generic_env
+    use_xdg
 
-test -d "${HOME}/.deno" && \
-    use_deno
+    test -d "${HOME}/.deno" && \
+        use_deno
 
-test -d "${HOME}/.nodebrew" && \
-    use_nodebrew
+    test -d "${HOME}/.nodebrew" && \
+        use_nodebrew
 
-if [ "${ZSH_OS}" = "Darwin" ]; then
-    use_homebrew
-    compiler_flags_for_darwin
-elif [ "${ZSH_OS}" = "Linux" ]; then
-    case "${ZSH_ARCH}" in
-        aarch64)
-            compiler_flags_for_linux_aarch64 ;;
-        x86_64)
-            compiler_flags_for_linux_x86_64 ;;
-        *)
-            compiler_flags_for_linux ;;
-    esac
-fi
+    test -d "${HOME}/local" && \
+        use_prefix_local
 
-use_prefix_local
-use_clangsay
+    which clangsay > /dev/null 2>&1 && \
+        use_clangsay
+
+    if [ "${ZSH_OS}" = "Linux" ]; then
+        case "${ZSH_ARCH}" in
+            aarch64)
+                compiler_flags_for_linux_aarch64 ;;
+            x86_64)
+                compiler_flags_for_linux_x86_64 ;;
+            *)
+                compiler_flags_for_linux ;;
+        esac
+    elif [ "${ZSH_OS}" = "Darwin" ]; then
+        use_homebrew
+        compiler_flags_for_darwin
+    fi
+}

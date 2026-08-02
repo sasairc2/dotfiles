@@ -48,13 +48,15 @@ set_alias_git() {
 #   alias acssh="PERL5LIB=\"\" cssh ${DENTAKU} ${NUMMERN} ${COMPUTERWELT} ${COMPUTERWELT2} ${AERODYNAMIK} ${ROBOTS} ${COMPUTERLIEBE}"
 #}
 
-set_alias_generic
+() {
+    set_alias_generic
 
-if [ "${ZSH_OS}" = "Linux" ]; then
-    set_alias_for_linux
-elif [ "${ZSH_OS}" = "Darwin" ]; then
-    set_alias_for_darwin
-fi
+    if [ "${ZSH_OS}" = "Linux" ]; then
+        set_alias_for_linux
+    elif [ "${ZSH_OS}" = "Darwin" ]; then
+        set_alias_for_darwin
+    fi
 
-which git > /dev/null 2>&1 && \
-    set_alias_git
+    which git > /dev/null 2>&1 && \
+        set_alias_git
+}
