@@ -44,6 +44,8 @@ fi
         source "${ZDOTDIR}/env.zsh"
     test -f "${ZDOTDIR}/env.local.zsh" && \
         source "${ZDOTDIR}/env.local.zsh"
+    test -f "${ZDOTDIR}/env.func.zsh" && \
+        source "${ZDOTDIR}/env.func.zsh"
     test -f "${ZDOTDIR}/alias.zsh" && \
         source "${ZDOTDIR}/alias.zsh"
     test -f "${ZDOTDIR}/alias.local.zsh" && \

@@ -19,15 +19,24 @@ reset_orig_path() {
     export PATH="${ZSH_ORIGINAL_PATH}"
 }
 
-# backup original LD_LIBRARY_PATH
+# backup original (DY)LD_LIBRARY_PATH
 set_orig_ld_lib_path() {
-    test -z "${ZSH_ORIGINAL_LD_LIBRARY_PATH}" && \
-        export ZSH_ORIGINAL_LD_LIBRARY_PATH="${LD_LIBRARY_PATH}"
+    if [ "${ZSH_OS}" = "Darwin" ]; then
+        test -z "${ZSH_ORIGINAL_DYLD_LIBRARY_PATH}" && \
+            export ZSH_ORIGINAL_DYLD_LIBRARY_PATH="${DYLD_LIBRARY_PATH}"
+    else
+        test -z "${ZSH_ORIGINAL_LD_LIBRARY_PATH}" && \
+            export ZSH_ORIGINAL_LD_LIBRARY_PATH="${LD_LIBRARY_PATH}"
+    fi
 }
 
-# restore original LD_LIBRARY_PATH
+# restore original (DY)LD_LIBRARY_PATH
 reset_orig_ld_lib_path() {
-    export LD_LIBRARY_PATH="${ZSH_ORIGINAL_LD_LIBRARY_PATH}"
+    if [ "${ZSH_OS}" = "Darwin" ]; then
+        export DYLD_LIBRARY_PATH="${ZSH_ORIGINAL_DYLD_LIBRARY_PATH}"
+    else
+        export LD_LIBRARY_PATH="${ZSH_ORIGINAL_LD_LIBRARY_PATH}"
+    fi
 }
 
 use_generic_env() {
@@ -154,28 +163,9 @@ compiler_flags_for_linux_aarch64 () {
     export CXXFLAGS="${CFLAGS}"
 }
 
-# show envs
-show_envs() {
-    cat <<EOF
-ZSH_OS=${ZSH_OS}
-ZSH_ARCH=${ZSH_ARCH}
-PATH=${PATH}
-PKG_CONFIG_PATH=${PKG_CONFIG_PATH}
-CFLAGS=${CFLAGS}
-CXXFLAGS=${CXXFLAGS}
-CPPFLAGS=${CPPFLAGS}
-LDFLAGS=${LDFLAGS}
-EOF
-    if [ "${ZSH_OS}" = "Darwin" ]; then
-        echo "DYLD_LIBRARY_PATH=${DYLD_LIBRARY_PATH}"
-    else
-        echo "LD_LIBRARY_PATH=${LD_LIBRARY_PATH}"
-    fi
-}
-
 # path deduplication
 finalize_env() {
-    unset PATH MANPATH INFOPATH PKG_CONFIG_PATH CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
+    unset PATH MANPATH INFOPATH PKG_CONFIG_PATH CFLAGS CXXFLAGS CPPFLAGS LDFLAGS LD_LIBRARY_PATH DYLD_LIBRARY_PATH
 }
 
 () {
