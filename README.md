@@ -6,7 +6,7 @@ Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 
 - Vim with dein.vim + ddc.vim
 - Per-filetype indent via `.vim/ftplugin`
-- Zsh split into `env.zsh`, `alias.zsh`, `env.local.zsh`
+- Zsh split into `alias.zsh`, `env,zsh`, `env.func.zsh`
 - Custom `.screenrc` with status line and keybinds
 - fbterm config for TTY (fonts, input)
 - Minimal X11 config via `.xinitrc`, `.xsession`, `.Xresources`, `.Xmodmap`
@@ -35,7 +35,8 @@ Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 │   ├── .zshrc
 │   ├── alias.zsh
 │   ├── completions/
-│   └── env.zsh
+│   ├── env.zsh
+│   └── env.func.zsh
 ├── .screenrc
 ├── .fbtermrc
 ├── .Xresources
