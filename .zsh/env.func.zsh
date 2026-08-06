@@ -39,13 +39,9 @@ EOF
 }
 
 zenv() {
-    errno=0
+    zerrno=0
 
     case "$1" in
-        path)
-            zenv_path "$2" ;;
-        ld)
-            zenv_ld "$2" ;;
         show)
             zenv_show ;;
         reset)
@@ -63,5 +59,5 @@ zenv() {
             zerrno=2 ;;
     esac
 
-    return $errno
+    return $zerrno
 }
