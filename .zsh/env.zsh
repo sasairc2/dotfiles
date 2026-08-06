@@ -19,6 +19,17 @@ reset_orig_path() {
     export PATH="${ZSH_ORIGINAL_PATH}"
 }
 
+# backup original LD_LIBRARY_PATH
+set_orig_ld_lib_path() {
+    test -z "${ZSH_ORIGINAL_LD_LIBRARY_PATH}" && \
+        export ZSH_ORIGINAL_LD_LIBRARY_PATH="${LD_LIBRARY_PATH}"
+}
+
+# restore original LD_LIBRARY_PATH
+reset_orig_ld_lib_path() {
+    export LD_LIBRARY_PATH="${ZSH_ORIGINAL_LD_LIBRARY_PATH}"
+}
+
 use_generic_env() {
     # disable screen lock
     export LOCKPRG="/bin/true"
@@ -32,9 +43,11 @@ use_generic_env() {
     export PAGER="less"
 
     # history
+    local HISTVAL=100000
+
     export HISTFILE="${ZDOTDIR}/zsh_history"
-    export HISTSIZE=100000
-    export SAVEHIST=100000
+    export HISTSIZE=${HISTVAL}
+    export SAVEHIST=${HISTVAL}
     export LESSHISTFILE=-
     export LESSCHARSET="UTF-8"
     setopt HIST_IGNORE_DUPS
@@ -161,14 +174,16 @@ EOF
 }
 
 # path deduplication
-#finalize_env() {
-#    typeset -U PATH MANPATH INFOPATH PKG_CONFIG_PATH CPPFLAGS LDFLAGS
-#}
+finalize_env() {
+    unset PATH MANPATH INFOPATH PKG_CONFIG_PATH CFLAGS CXXFLAGS CPPFLAGS LDFLAGS
+}
 
 () {
     set_os_arch
     set_orig_path
     reset_orig_path
+    set_orig_ld_lib_path
+    reset_orig_ld_lib_path
     use_generic_env
     use_xdg
 
