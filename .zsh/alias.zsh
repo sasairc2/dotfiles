@@ -8,7 +8,7 @@ set_alias_generic() {
     alias sc="screen"
     alias sr="screen -r"
     alias rl="source ${ZDOTDIR}/.zshrc"
-    alias edit-zmotd="${EDITOR} ${ZDOTDIR}/motd.zsh"
+    alias vizmotd="${EDITOR} ${ZDOTDIR}/motd.zsh"
     alias zh="history -i -E 1"
     alias ht="headtail --pretty"
     alias mbhead="mbhead -p"

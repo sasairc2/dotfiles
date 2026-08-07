@@ -39,25 +39,25 @@ EOF
 }
 
 zenv() {
-    zerrno=0
+    local ques=0
 
     case "$1" in
         show)
             zenv_show ;;
         reset)
             if [ "$2" = "path" ]; then
-                reset_orig_path
+                zenv_path "$1"
             elif [ "$2" = "ld" ]; then
-                reset_orig_ld_lib_path
+                zenv_ld "$1"
             else
-                zerrno=1
+                ques=2
             fi
             ;;
         finalize)
             finalize_env ;;
         *)
-            zerrno=2 ;;
+            ques=1
     esac
 
-    return $zerrno
+    return ${ques}
 }
