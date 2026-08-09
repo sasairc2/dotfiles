@@ -25,9 +25,9 @@ install-fbtermrc: prefix .fbtermrc
 install-htoprc: .config
 	$(MAKE) -C $< $@
 
-install-x11: prefix
-	install -pm 755 .xinitrc .xsession $(PREFIX)
-	install -pm 644 .Xresources .Xmodmap $(PREFIX)
+install-x11: prefix .xinitrc .Xresources .Xmodmap xinitrc.patch
+	install -pm 755 .xinitrc $(PREFIX)
+	install -pm 644 .Xresources .Xmodmap xinitrc.patch $(PREFIX)
 
 install: install-vimrc \
 	install-zshrc \
