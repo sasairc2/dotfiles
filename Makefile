@@ -27,7 +27,7 @@ install-htoprc: .config
 
 install-x11: prefix
 	install -pm 755 .xinitrc $(PREFIX)
-	install -pm 644 .Xresources .Xmodmap $(PREFIX)
+	install -pm 644 .Xresources .Xmodmap xinitrc.patch $(PREFIX)
 
 install: install-vimrc \
 	install-zshrc \
