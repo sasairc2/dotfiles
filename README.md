@@ -9,7 +9,7 @@ Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 - Zsh split into `alias.zsh`, `env,zsh`, `env.func.zsh`
 - Custom `.screenrc` with status line and keybinds
 - fbterm config for TTY (fonts, input)
-- Minimal X11 config via `.xinitrc`, `.xsession`, `.Xresources`, `.Xmodmap`
+- Minimal X11 config via `.xinitrc`, `.Xresources`, `.Xmodmap`
 
 ## Structure
 
@@ -37,12 +37,12 @@ Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 │   ├── completions/
 │   ├── env.zsh
 │   └── env.func.zsh
-├── .screenrc
 ├── .fbtermrc
-├── .Xresources
-├── .Xmodmap
+├── .screenrc
 ├── .xinitrc
-├── .xsession
+├── .Xmodmap
+├── .Xresources
+├── xinitrc.patch
 ├── Makefile
 ├── LICENSE
 └── README.md
