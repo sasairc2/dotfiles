@@ -18,6 +18,7 @@ set_alias_for_linux() {
     alias ls="ls --color=auto"
     alias sysctl="systemctl"
     alias jnlctl="journalctl"
+    alias bthctl="bluetoothctl"
     alias xpbcopy="xclip -selection clipboard"
     alias amix="alsamixer"
     alias pmix="pavucontrol"
