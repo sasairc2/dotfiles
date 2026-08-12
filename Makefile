@@ -1,5 +1,6 @@
 PREFIX		:= ~/testprefix
 ZSH_DOT_DIR	:= $(PREFIX)/.zsh
+VIM_DOT_DIR	:= $(PREFIX)/.vim
 XDG_CONF_DIR	:= $(PREFIX)/.config
 MAKE		:= gmake
 export
@@ -11,7 +12,7 @@ prefix:
 	mkdir -p $(PREFIX)
 
 install-vimrc: prefix .vim
-	cp -r .vim $(PREFIX)
+	$(MAKE) -C .vim install
 
 install-zshrc: prefix .zsh
 	$(MAKE) -C .zsh install
