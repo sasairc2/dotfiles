@@ -9,7 +9,7 @@ install-vimrc: $(VIMRCS)
 	install -pm 644 $^ $(VIM_DOT_DIR)
 
 install-ftplugin: ftplugin
-	$(MAKE) -C ftplugin $@
+	$(MAKE) -C $< $@
 
 .PHONY: install \
 	install-vimrc \
