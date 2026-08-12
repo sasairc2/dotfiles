@@ -14,7 +14,7 @@ install-vimrc: prefix .vim
 	cp -r .vim $(PREFIX)
 
 install-zshrc: prefix .zsh
-	make -C .zsh install
+	$(MAKE) -C .zsh install
 
 install-screenrc: prefix .screenrc
 	install -pm 644 .screenrc $(PREFIX)

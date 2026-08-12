@@ -16,7 +16,7 @@ install-zshrc-env: env.zsh env.func.zsh
 	install -pm 644 $^ $(ZSH_DOT_DIR)
 
 install-zsh-completions: completions
-	make -C ./completions $@
+	$(MAKE) -C ./completions $@
 
 link: install-zshrc-env
 	ln -sf $(ZSH_DOT_DIR)/.zshenv $(PREFIX)/.zshenv
