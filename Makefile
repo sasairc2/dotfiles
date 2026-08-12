@@ -1,4 +1,5 @@
 PREFIX		:= ~/testprefix
+ZSH_DOT_DIR	:= $(PREFIX)/.zsh
 XDG_CONF_DIR	:= $(PREFIX)/.config
 MAKE		:= gmake
 export
@@ -13,8 +14,7 @@ install-vimrc: prefix .vim
 	cp -r .vim $(PREFIX)
 
 install-zshrc: prefix .zsh
-	cp -r .zsh $(PREFIX)
-	ln -sf $(PREFIX)/.zsh/.zshenv $(PREFIX)/.zshenv
+	make -C .zsh install
 
 install-screenrc: prefix .screenrc
 	install -pm 644 .screenrc $(PREFIX)
