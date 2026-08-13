@@ -18,7 +18,7 @@ install-zshrc-env: env.zsh env.func.zsh
 install-zsh-completions: completions
 	$(MAKE) -C $< $@
 
-link: install-zshrc-env
+link: install-zshenv
 	ln -sf $(ZSH_DOT_DIR)/.zshenv $(PREFIX)/.zshenv
 
 .PHONY: install \
