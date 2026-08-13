@@ -44,6 +44,7 @@ Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 ├── .Xresources
 ├── xinitrc.patch
 ├── Makefile
+├── config.mk
 ├── LICENSE
 └── README.md
 ```

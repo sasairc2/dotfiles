@@ -1,4 +1,5 @@
 install-htoprc: htoprc
-	install -pm 644 $< $(XDG_CONF_DIR)/htop/
+	install -d $(XDG_CONF_DIR)/htop
+	install -pm 644 $< $(XDG_CONF_DIR)/htop
 
 .PHONY: install-htoprc

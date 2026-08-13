@@ -1,3 +1,5 @@
+include ../config.mk
+
 VIMRCS	= $(wildcard vimrc*)
 
 install: vimdotdir install-vimrc install-ftplugin
