@@ -1,21 +1,16 @@
-PREFIX		:= ~/testprefix
-ZSH_DOT_DIR	:= $(PREFIX)/.zsh
-VIM_DOT_DIR	:= $(PREFIX)/.vim
-XDG_CONF_DIR	:= $(PREFIX)/.config
-MAKE		:= gmake
-export
+include ./config.mk
 
 all clean:
 	@echo "Usage: make install"
 
 prefix:
-	mkdir -p $(PREFIX)
+	install -d $(PREFIX)
 
-install-vimrc: prefix .vim
-	$(MAKE) -C .vim install
+install-vimrc: .vim
+	$(MAKE) -C $< install
 
-install-zshrc: prefix .zsh
-	$(MAKE) -C .zsh install
+install-zshrc: .zsh
+	$(MAKE) -C $< install
 
 install-screenrc: prefix .screenrc
 	install -pm 644 .screenrc $(PREFIX)

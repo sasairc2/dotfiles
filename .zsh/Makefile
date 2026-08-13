@@ -1,3 +1,5 @@
+include ../config.mk
+
 install: zdotdir install-zshrc install-zshenv install-zshrc-alias install-zshrc-env install-zsh-completions link
 
 zdotdir:
