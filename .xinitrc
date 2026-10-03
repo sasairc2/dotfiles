@@ -11,9 +11,11 @@ export WM="/usr/bin/wmaker"
 
 xrdb -merge ~/.Xresources
 xmodmap ~/.Xmodmap
-#xset m 6 4
-xset m 1.5 2
 xset r rate 192 32
+
+xinput set-prop 'PS/2 Synaptics TouchPad' 'libinput Accel Speed' 1
+xinput set-prop 'Kensington Expert Mouse" "libinput Accel Speed' -0.2
+xinput set-prop 'SINO WEALTH ELECOM TrackBall Mouse' 'libinput Accel Speed' -0.75
 
 /usr/bin/uim-xim &
 /usr/bin/pulseaudio --daemonize
