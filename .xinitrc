@@ -20,7 +20,9 @@ xinput set-prop 'SINO WEALTH ELECOM TrackBall Mouse' 'libinput Accel Speed' -0.7
 /usr/bin/uim-xim &
 /usr/bin/pulseaudio --daemonize
 /usr/local/bin/wmsystemtray &
-LANG=C /usr/bin/gkrellm &
+/usr/local/bin/wmbatteries &
+/usr/bin/pavucontrol &
+#LANG=C /usr/bin/gkrellm &
 #/usr/games/xsnow -nosanta &
 
 exec "${WM}"
