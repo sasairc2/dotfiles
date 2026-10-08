@@ -26,6 +26,7 @@ set_alias_for_linux() {
 
 set_alias_for_darwin() {
     alias ls="ls -G"
+    alias dispoff="pmset displaysleepnow"
 }
 
 set_alias_git() {
