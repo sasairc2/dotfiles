@@ -19,6 +19,7 @@ set_alias_for_linux() {
     alias sysctl="systemctl"
     alias jnlctl="journalctl"
     alias bthctl="bluetoothctl"
+    alias dispoff="xset dpms force off"
     alias xpbcopy="xclip -selection clipboard"
     alias amix="alsamixer"
     alias pmix="pavucontrol"
