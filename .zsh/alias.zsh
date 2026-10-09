@@ -15,7 +15,7 @@ set_alias_generic() {
 }
 
 set_alias_for_linux() {
-    alias ls="ls --color=auto"
+    alias ls="ls --quoting-style=literal --color=auto"
     alias sysctl="systemctl"
     alias jnlctl="journalctl"
     alias bthctl="bluetoothctl"
