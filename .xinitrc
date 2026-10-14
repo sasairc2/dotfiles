@@ -14,7 +14,7 @@ xmodmap ~/.Xmodmap
 xset r rate 192 32
 
 xinput set-prop 'PS/2 Synaptics TouchPad' 'libinput Accel Speed' 1
-xinput set-prop 'Kensington Expert Mouse" "libinput Accel Speed' -0.2
+xinput set-prop 'Kensington Expert Mouse' 'libinput Accel Speed' -0.2
 xinput set-prop 'ELECOM ELECOM TrackBall Mouse' 'libinput Accel Speed' -0.7
 
 /usr/bin/uim-xim &
