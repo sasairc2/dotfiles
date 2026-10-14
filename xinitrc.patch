@@ -1,8 +1,8 @@
-*** .xinitrc	2026-10-03 17:51:31.792835801 +0900
---- .xinitrc2	2026-10-03 17:51:48.379872988 +0900
+*** .xinitrc	2026-10-14 12:56:20.325791747 +0900
+--- .xinitrc2	2026-10-14 12:56:59.886688847 +0900
 *************** export QT_IM_MODULE=uim
 *** 5,13 ****
-  export WM="/usr/bin/wmaker"
+  export WM="/usr/local/bin/wmaker"
   
   #xrandr --auto
 ! #xrandr --newmode "2560x1440_60.00" 312.25 2560 2752 3024 3488 1440 1443 1448 1493 -hsync +vsync
@@ -12,7 +12,7 @@
   xrdb -merge ~/.Xresources
   xmodmap ~/.Xmodmap
 --- 5,13 ----
-  export WM="/usr/bin/wmaker"
+  export WM="/usr/local/bin/wmaker"
   
   #xrandr --auto
 ! xrandr --newmode "2560x1440_60.00" 312.25 2560 2752 3024 3488 1440 1443 1448 1493 -hsync +vsync

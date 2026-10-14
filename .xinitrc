@@ -2,7 +2,7 @@ export LANG=ja_JP.UTF-8
 export XMODIFIERS=@im=uim
 export GTK_IM_MODULE=uim
 export QT_IM_MODULE=uim
-export WM="/usr/bin/wmaker"
+export WM="/usr/local/bin/wmaker"
 
 #xrandr --auto
 #xrandr --newmode "2560x1440_60.00" 312.25 2560 2752 3024 3488 1440 1443 1448 1493 -hsync +vsync
