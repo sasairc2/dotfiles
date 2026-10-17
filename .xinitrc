@@ -19,10 +19,10 @@ xinput set-prop 'ELECOM ELECOM TrackBall Mouse' 'libinput Accel Speed' -0.7
 
 /usr/bin/uim-xim &
 /usr/bin/pulseaudio --daemonize
+/usr/local/bin/wmclock &
 /usr/local/bin/wmsystemtray &
 /usr/local/bin/wmbatteries &
-/usr/bin/pavucontrol &
-LANG=C /usr/bin/gkrellm &
+LANG=C /usr/local/bin/gkrellm &
 #/usr/games/xsnow -nosanta &
 
 exec "${WM}"
