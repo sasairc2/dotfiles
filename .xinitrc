@@ -23,6 +23,6 @@ xinput set-prop 'ELECOM ELECOM TrackBall Mouse' 'libinput Accel Speed' -0.7
 /usr/local/bin/wmsystemtray &
 /usr/local/bin/wmbatteries &
 LANG=C /usr/local/bin/gkrellm &
-#/usr/games/xsnow -nosanta &
+#/usr/local/games/xsnow -vintage -noconfig -nomenu -nosanta -root &
 
 exec "${WM}"
