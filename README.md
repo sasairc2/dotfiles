@@ -56,20 +56,22 @@ Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 % make PREFIX=$HOME install
 ```
 
-default: PREFIX=~/testprefix
+Default: PREFIX=~/testprefix
 
-see also `Makefile`.
+See also `Makefile`.
 
 ## Notes
 
 - macOS and Linux supported
 - No tmux, no fluff
-- X11 session started via .xinitrc (uim + wmaker, long-running stable setup)
+- X11 session started via `.xinitrc` (uim + wmaker, long-running stable setup)
 
 ## License
 
 These dotfiles are licensed under the Can't Be Bothered License 2025 (CBL).  
 See the [LICENSE](https://raw.githubusercontent.com/sasairc2/dotfiles/refs/heads/main/LICENSE) file for details.
+
+Some files under `linux/` may contain GPL-licensed kernel code.
 
 ## Author
 
