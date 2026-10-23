@@ -1,0 +1,17 @@
+*** a/drivers/video/logo/Kconfig	2026-10-19 08:14:58.000000000 +0900
+--- b/drivers/video/logo/Kconfig	2026-10-24 06:29:36.807378243 +0900
+*************** config LOGO_LINUX_CLUT224_FILE
+*** 76,79 ****
+--- 76,87 ----
+  
+  	    magick source_image -compress none -colors 224 destination.ppm
+  
++ config LOGO_LINUX_FORCE
++ 	bool "Classic style, always display the Linux logo"
++ 	depends on LOGO_LINUX_MONO || LOGO_LINUX_VGA16 || LOGO_LINUX_CLUT224
++ 	default n
++ 	help
++ 	  Always display the Linux logo,
++ 	  regardless of the console log level.
++ 
+  endif # LOGO
