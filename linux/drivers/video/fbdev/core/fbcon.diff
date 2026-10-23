@@ -1,0 +1,16 @@
+*** a/drivers/video/fbdev/core/fbcon.c	2026-10-19 08:14:58.000000000 +0900
+--- b/drivers/video/fbdev/core/fbcon.c	2026-10-24 06:07:54.143224300 +0900
+*************** static void fbcon_init(struct vc_data *v
+*** 1110,1117 ****
+--- 1110,1120 ----
+  
+  	info = fbcon_info_from_console(vc->vc_num);
+  
++ #ifndef CONFIG_LOGO_LINUX_FORCE
+  	if (logo_shown < 0 && console_loglevel <= CONSOLE_LOGLEVEL_QUIET)
+  		logo_shown = FBCON_LOGO_DONTSHOW;
++ /* CONFIG_LOGO_LINUX_FORCE */
++ #endif
+  
+  	if (vc != svc || logo_shown == FBCON_LOGO_DONTSHOW ||
+  	    (info->fix.type == FB_TYPE_TEXT))
