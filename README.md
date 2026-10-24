@@ -30,6 +30,8 @@ Minimal, modular Vim, Zsh, GNU Screen, and X11 setup.
 │   ├── vimrc.keybind
 │   ├── vimrc.local
 │   └── vimrc.visual
+├── .w3m
+│   └── keymap
 ├── .zsh
 │   ├── .zshenv
 │   ├── .zshrc

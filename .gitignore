@@ -9,3 +9,6 @@
 .zsh/.zcompdump
 .zsh/.zcompcache
 .zsh/.zsh_sessions
+.w3m/bookmark.html
+.w3m/cookie
+.w3m/history
