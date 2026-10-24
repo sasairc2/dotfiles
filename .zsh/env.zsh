@@ -140,11 +140,11 @@ compiler_flags_for_darwin() {
 }
 
 # compiler flags (universal binary)
-compiler_flags_for_darwin_universal() {
-    export CFLAGS="-arch x86_64 -arch arm64"
-    export CXXFLAGS="${CFLAGS}"
-    export LDFLAGS="-arch x86_64 -arch arm64 ${LDFLAGS:+ $LDFLAGS}"
-}
+#compiler_flags_for_darwin_universal() {
+#    export CFLAGS="-arch x86_64 -arch arm64"
+#    export CXXFLAGS="${CFLAGS}"
+#    export LDFLAGS="-arch x86_64 -arch arm64 ${LDFLAGS:+ $LDFLAGS}"
+#}
 
 # compiler flags (linux)
 compiler_flags_for_linux() {
