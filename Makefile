@@ -9,6 +9,9 @@ prefix:
 install-vimrc: .vim
 	$(MAKE) -C $< install
 
+install-w3m: .w3m
+	$(MAKE) -C $< install
+
 install-zshrc: .zsh
 	$(MAKE) -C $< install
 
@@ -35,6 +38,7 @@ install: install-vimrc \
 	prefix \
 	install \
 	install-vimrc \
+	install-w3m \
 	install-zshrc \
 	install-screenrc \
 	install-fbtermrc \
