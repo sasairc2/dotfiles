@@ -10,6 +10,7 @@ set_alias_generic() {
     alias rl="source ${ZDOTDIR}/.zshrc"
     alias vizmotd="${EDITOR} ${ZDOTDIR}/motd.zsh"
     alias zh="history -i -E 1"
+    alias w3m="w3m https://duckduckgo.com/"
     alias ht="headtail --pretty"
     alias mbhead="mbhead -p"
 }
@@ -23,6 +24,7 @@ set_alias_for_linux() {
     alias xpbcopy="xclip -selection clipboard"
     alias amix="alsamixer"
     alias pmix="pavucontrol"
+    alias mutt="neomutt -f ${MHDIR}"
 }
 
 set_alias_for_darwin() {

@@ -1,0 +1,7 @@
+keymap  {   PREV_TAB
+keymap  }   NEXT_TAB
+keymap  \"  CLOSE_TAB
+keymap  T   TAB_LINK
+keymap  <   BACK
+keymap  >   SELECT
+keymap  E   EXTERN
