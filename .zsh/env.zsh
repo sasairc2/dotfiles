@@ -50,6 +50,7 @@ use_generic_env() {
     export EDITOR="vim"
     export VISUAL="${EDITOR}"
     export PAGER="less"
+    setopt PRINT_EIGHT_BIT
 
     # history
     local HISTVAL=100000
@@ -71,7 +72,6 @@ use_generic_env() {
     # locale
     export LANG="ja_JP.UTF-8"
     #export LC_ALL="ja_JP.UTF-8"
-    setopt PRINT_EIGHT_BIT
 }
 
 # prefix local

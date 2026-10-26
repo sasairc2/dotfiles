@@ -10,7 +10,7 @@ set_alias_generic() {
     alias rl="source ${ZDOTDIR}/.zshrc"
     alias vizmotd="${EDITOR} ${ZDOTDIR}/motd.zsh"
     alias zh="history -i -E 1"
-    alias w3m="w3m https://duckduckgo.com/"
+    alias w3m="w3m -s -t 4"
     alias ht="headtail --pretty"
     alias mbhead="mbhead -p"
 }
