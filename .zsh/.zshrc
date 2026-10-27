@@ -20,21 +20,16 @@ typeset -ga fpath
 fpath+=("${ZDOTDIR:-${HOME}/.zsh}/completions")
 compinit
 
-# change terminal window title
+# precmd
 precmd() {
-    print -Pn "\e]0;[${USER}@${HOST}] %~\a"
-}
+    for PRECMDS in "${ZDOTDIR}/precmd.d"/*.zsh; do
+        test -f "${PRECMDS}" || \
+            continue
+        source "${PRECMDS}"
+    done
 
-if [ "${TERM}" = "screen" -o "${TERM}" = "screen-256color" ]; then
-    preexec() {
-        local cmd="$1"
-        local name="${${(s: :)cmd}[1]}"
-        print -n "\ek${name}\e\\"
-    }
-    precmd() {
-        print -n "\ekzsh\e\\"
-    }
-fi
+    unset PRECMDS
+}
 
 () {
     # disable ctrl-S
@@ -50,6 +45,8 @@ fi
         source "${ZDOTDIR}/alias.zsh"
     test -f "${ZDOTDIR}/alias.local.zsh" && \
         source "${ZDOTDIR}/alias.local.zsh"
+    test -f "${ZDOTDIR}/func.zsh" && \
+        source "${ZDOTDIR}/func.zsh"
     test -f "${ZDOTDIR}/motd.zsh" && \
         cat "${ZDOTDIR}/motd.zsh"
 }

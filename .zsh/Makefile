@@ -1,6 +1,6 @@
 include ../config.mk
 
-install: zdotdir install-zshrc install-zshenv install-zshrc-alias install-zshrc-env install-zsh-completions link
+install: zdotdir install-zshrc install-zshenv install-zshrc-alias install-zshrc-env install-zsh-precmd.d install-zsh-completions link
 
 zdotdir:
 	install -d $(ZSH_DOT_DIR)
@@ -17,6 +17,9 @@ install-zshrc-alias: alias.zsh
 install-zshrc-env: env.zsh env.func.zsh
 	install -pm 644 $^ $(ZSH_DOT_DIR)
 
+install-zsh-precmd.d: precmd.d
+	$(MAKE) -C $< $@
+
 install-zsh-completions: completions
 	$(MAKE) -C $< $@
 
@@ -28,6 +31,7 @@ link: install-zshenv
 	install-zshenv \
 	install-zshrc-alias \
 	install-zshrc-env \
+	install-zsh-precmd.d \
 	install-zsh-completions \
 	zdotdir \
 	link
