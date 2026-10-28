@@ -1,1 +1,0 @@
-10/10_is_gitdir.zsh
