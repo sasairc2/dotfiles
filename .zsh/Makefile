@@ -18,7 +18,7 @@ install-zshrc-env: env.zsh env.func.zsh
 	install -pm 644 $^ $(ZSH_DOT_DIR)
 
 install-zsh-precmd.d: precmd.d
-	$(MAKE) -C $< $@
+	$(CP) -RPv $< $(ZSH_DOT_DIR)
 
 install-zsh-completions: completions
 	$(MAKE) -C $< $@
