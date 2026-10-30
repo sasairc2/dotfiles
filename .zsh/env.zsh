@@ -44,22 +44,12 @@ use_generic_env() {
     export LOCKPRG="/bin/true"
  
     # prompt
-    export PROMPT="%{[31m%}%n@%m%{[00m%}%f [ %~ ] %h %# "
-
-    # misc
-    export EDITOR="vim"
-    export VISUAL="${EDITOR}"
-    export PAGER="less"
-    setopt PRINT_EIGHT_BIT
+    #export PROMPT='%{[31m%}%n@%m%{[00m%}%f [ %~ ] %h %# '
+    setopt PROMPT_SUBST
+    PROMPT_EXP=("" "" "" "" "" "" "" "")
+    export PROMPT='%{[31m%}%n@%m%{[00m%}%f [ %~ ] %h ${(j: :)${(@)PROMPT_EXP:#}}%# '
 
     # history
-    local HISTVAL=100000
-
-    export HISTFILE="${ZDOTDIR}/zsh_history"
-    export HISTSIZE=${HISTVAL}
-    export SAVEHIST=${HISTVAL}
-    export LESSHISTFILE=-
-    export LESSCHARSET="UTF-8"
     setopt HIST_IGNORE_DUPS
     setopt HIST_IGNORE_ALL_DUPS
     setopt HIST_IGNORE_SPACE
@@ -69,9 +59,22 @@ use_generic_env() {
     setopt HIST_NO_STORE
     setopt PUSHD_IGNORE_DUPS
 
+    local HISTVAL=100000
+    export HISTSIZE=${HISTVAL}
+    export SAVEHIST=${HISTVAL}
+    export HISTFILE="${ZDOTDIR}/zsh_history"
+
     # locale
+    setopt PRINT_EIGHT_BIT
     export LANG="ja_JP.UTF-8"
     #export LC_ALL="ja_JP.UTF-8"
+ 
+    # misc
+    export EDITOR="vim"
+    export VISUAL="${EDITOR}"
+    export PAGER="less"
+    export LESSCHARSET="UTF-8"
+    export LESSHISTFILE=-
 }
 
 # prefix local
@@ -192,11 +195,14 @@ finalize_env() {
     if [ "${ZSH_OS}" = "Linux" ]; then
         case "${ZSH_ARCH}" in
             aarch64)
-                compiler_flags_for_linux_aarch64 ;;
+                compiler_flags_for_linux_aarch64
+                ;;
             x86_64)
-                compiler_flags_for_linux_x86_64 ;;
+                compiler_flags_for_linux_x86_64
+                ;;
             *)
-                compiler_flags_for_linux ;;
+                compiler_flags_for_linux
+                ;;
         esac
     elif [ "${ZSH_OS}" = "Darwin" ]; then
         use_homebrew
