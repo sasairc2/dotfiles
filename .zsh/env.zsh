@@ -70,7 +70,6 @@ use_generic_env() {
     #export LC_ALL="ja_JP.UTF-8"
  
     # misc
-    setopt PRINT_EIGHT_BIT
     export EDITOR="vim"
     export VISUAL="${EDITOR}"
     export PAGER="less"
@@ -196,11 +195,14 @@ finalize_env() {
     if [ "${ZSH_OS}" = "Linux" ]; then
         case "${ZSH_ARCH}" in
             aarch64)
-                compiler_flags_for_linux_aarch64 ;;
+                compiler_flags_for_linux_aarch64
+                ;;
             x86_64)
-                compiler_flags_for_linux_x86_64 ;;
+                compiler_flags_for_linux_x86_64
+                ;;
             *)
-                compiler_flags_for_linux ;;
+                compiler_flags_for_linux
+                ;;
         esac
     elif [ "${ZSH_OS}" = "Darwin" ]; then
         use_homebrew
