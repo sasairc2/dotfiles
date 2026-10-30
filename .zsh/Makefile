@@ -26,6 +26,13 @@ install-zsh-completions: completions
 link: install-zshenv
 	ln -sf $(ZSH_DOT_DIR)/.zshenv $(PREFIX)/.zshenv
 
+check:
+	$(ZSH) -n .zshrc
+	$(ZSH) -n .zshenv
+	find . -type f -name '*.zsh' | \
+		tee /dev/stderr | \
+		xargs -n 1 $(ZSH) -n
+
 .PHONY: install \
 	install-zshrc \
 	install-zshenv \
@@ -34,4 +41,5 @@ link: install-zshenv
 	install-zsh-precmd.d \
 	install-zsh-completions \
 	zdotdir \
-	link
+	link \
+	check

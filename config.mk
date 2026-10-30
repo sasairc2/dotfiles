@@ -1,4 +1,5 @@
 PREFIX		:= ~/testprefix
+ZSH		:= zsh
 ZSH_DOT_DIR	:= $(PREFIX)/.zsh
 W3M_DOT_DIR	:= $(PREFIX)/.w3m
 VIM_DOT_DIR	:= $(PREFIX)/.vim
