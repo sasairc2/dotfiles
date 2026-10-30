@@ -27,9 +27,11 @@ link: install-zshenv
 	ln -sf $(ZSH_DOT_DIR)/.zshenv $(PREFIX)/.zshenv
 
 check:
-	zsh -n .zshrc
-	zsh -n .zshenv
-	find . -type f -name '*.zsh' | tee /dev/stderr | xargs -n 1 zsh -n
+	$(ZSH) -n .zshrc
+	$(ZSH) -n .zshenv
+	find . -type f -name '*.zsh' | \
+		tee /dev/stderr | \
+		xargs -n 1 $(ZSH) -n
 
 .PHONY: install \
 	install-zshrc \
