@@ -44,7 +44,9 @@ use_generic_env() {
     export LOCKPRG="/bin/true"
  
     # prompt
-    export PROMPT="%{[31m%}%n@%m%{[00m%}%f [ %~ ] %h %# "
+    setopt PROMPT_SUBST
+    PROMPT_EXP=("" "" "" "" "" "" "" "")
+    export PROMPT='%{[31m%}%n@%m%{[00m%}%f [ %~ ] %h ${(j: :)${(@)PROMPT_EXP:#}}%# '
 
     # misc
     export EDITOR="vim"
