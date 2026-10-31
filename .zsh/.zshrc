@@ -2,38 +2,42 @@
 # .zsh/.zshrc
 #
 
-autoload -Uz compinit colors history-search-end
+stty stop undef
 
-# color
-colors
-zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
+test -f "${ZDOTDIR}/opt.zsh" && \
+    source "${ZDOTDIR}/opt.zsh"
 
-# history search
-bindkey -e
-zle -N history-beginning-search-backward-end history-search-end
-zle -N history-beginning-search-forward-end history-search-end
-bindkey '^P' history-beginning-search-backward-end
-bindkey '^N' history-beginning-search-forward-end
+autoload -Uz compinit history-search-end colors
 
-# zsh completions
+# completion
 typeset -ga fpath
 fpath+=("${ZDOTDIR:-${HOME}/.zsh}/completions")
-compinit
 
 # precmd
 precmd() {
+    local PRECMDS
+
     for PRECMDS in "${ZDOTDIR}/precmd.d"/*.zsh; do
         test -f "${PRECMDS}" || \
             continue
         source "${PRECMDS}"
     done
-
-    unset PRECMDS
 }
 
 () {
-    # disable ctrl-S
-    stty stop undef
+    # completion
+    compinit
+
+    # keybind
+    bindkey -e
+    zle -N history-beginning-search-backward-end history-search-end
+    zle -N history-beginning-search-forward-end history-search-end
+    bindkey '^P' history-beginning-search-backward-end
+    bindkey '^N' history-beginning-search-forward-end
+
+    # color
+    colors
+    zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
     test -f "${ZDOTDIR}/env.zsh" && \
         source "${ZDOTDIR}/env.zsh"
