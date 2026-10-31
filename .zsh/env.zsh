@@ -45,27 +45,16 @@ use_generic_env() {
  
     # prompt
     #export PROMPT='%{[31m%}%n@%m%{[00m%}%f [ %~ ] %h %# '
-    setopt PROMPT_SUBST
     PROMPT_EXP=("" "" "" "" "" "" "" "")
     export PROMPT='%{[31m%}%n@%m%{[00m%}%f [ %~ ] %h ${(j: :)${(@)PROMPT_EXP:#}}%# '
 
     # history
-    setopt HIST_IGNORE_DUPS
-    setopt HIST_IGNORE_ALL_DUPS
-    setopt HIST_IGNORE_SPACE
-    setopt HIST_SAVE_NO_DUPS
-    setopt HIST_FIND_NO_DUPS
-    setopt HIST_REDUCE_BLANKS
-    setopt HIST_NO_STORE
-    setopt PUSHD_IGNORE_DUPS
-
     local HISTVAL=100000
     export HISTSIZE=${HISTVAL}
     export SAVEHIST=${HISTVAL}
     export HISTFILE="${ZDOTDIR}/zsh_history"
 
     # locale
-    setopt PRINT_EIGHT_BIT
     export LANG="ja_JP.UTF-8"
     #export LC_ALL="ja_JP.UTF-8"
  
