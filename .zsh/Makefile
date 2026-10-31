@@ -12,7 +12,7 @@ install-zshenv: .zshenv
 	install -pm 644 $< $(ZSH_DOT_DIR)
 
 install-zshrc-alias: alias.zsh
-	install -pm 644 $^ $(ZSH_DOT_DIR)
+	install -pm 644 $< $(ZSH_DOT_DIR)
 
 install-zshrc-env: env.zsh env.func.zsh
 	install -pm 644 $^ $(ZSH_DOT_DIR)
